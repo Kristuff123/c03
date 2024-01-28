@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kristof <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/28 12:22:20 by kristof           #+#    #+#             */
-/*   Updated: 2024/01/28 12:56:02 by kristof          ###   ########.fr       */
+/*   Created: 2024/01/28 13:01:29 by kristof           #+#    #+#             */
+/*   Updated: 2024/01/28 13:23:48 by kristof          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <unistd.h>
+
 #include <stdio.h>
 
-int	ft_strcmp(char *s1, char *s2)
+int		ft_strncmp(char *s1, char *s2, unsigned int n)
 {
-		unsigned int		i;
-
+		unsigned int	i;
 		i = 0;
-		while (s1[i] != '\0' && s1[i] == s2[i])
+		if (n == 0)
+		{
+				return (0);
+		}
+		while (s1[i] !='\0' && s1[i] == s2[i] && i < n -1)
 		{
 				i++;
 		}
@@ -25,7 +28,7 @@ int	ft_strcmp(char *s1, char *s2)
 		{
 				return (0);
 		}
-		else
+		else 
 		{
 				return (s1[i] - s2[i]);
 		}
@@ -33,12 +36,13 @@ int	ft_strcmp(char *s1, char *s2)
 
 int		main(void)
 {
-		char str1[] = "Hello";
-		char str2[] = "Hello";
-		char str3[] = "World";
-
-		printf("compare 1 and 2 - equal: %d\n", ft_strcmp(str1, str2));
-		printf("compare 1 and 3 : %d\n", ft_strcmp(str1, str3));
-		printf("compare 3 and 1: %d\n", ft_strcmp(str3, str1));
+		char str1[] = "krzysztof";
+		char str2[] = "krzys";
+		char str3[] = "krzyg";
+		unsigned int	n;
+		n = 5;
+		printf("compare 1 and 2: %d\n", ft_strncmp(str1, str2, n));
+		printf("compare 1 and 3: %d\n", ft_strncmp(str1, str3, n));
+		printf("compare 1 and 3 but just 4 letters: %d\n", ft_strncmp(str1, str3, 4));
 		return (0);
 }
