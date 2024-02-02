@@ -6,7 +6,7 @@
 /*   By: kristof <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 13:34:38 by kristof           #+#    #+#             */
-/*   Updated: 2024/01/28 13:46:11 by kristof          ###   ########.fr       */
+/*   Updated: 2024/02/02 09:35:24 by kristof          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,19 @@ char	*ft_strcat(char *dest, char *src)
 		return (dest);
 }
 
-int		main(void)
-{
-		char str1[20] = "krzysztof";
-		char str2[] = " graczyk";
-		ft_strcat(str1, str2);
-		printf("%s\n", str1);
-		return (0);
-}
 
+int main(int argc, char *argv[]) {
+    if (argc < 3) {
+        printf("Usage: %s <string1> <string2>\n", argv[0]);
+        return 1;
+    }
+
+    // Concatenate the second argument to the first
+    ft_strcat(argv[1], argv[2]);
+
+    // Print the concatenated string
+	printf("Program name: %s\n", argv[0]);
+    printf("Concatenated string: %s\n", argv[1]);
+
+    return 0;
+}
